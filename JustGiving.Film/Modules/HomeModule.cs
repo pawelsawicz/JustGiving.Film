@@ -14,7 +14,7 @@ namespace JustGiving.Film.Modules
 
             Get["/"] = x =>
                 {
-                    return View["Index", GetVotes()];
+                    return View["Index.cshtml", GetVotes()];
                 };
         }
 
