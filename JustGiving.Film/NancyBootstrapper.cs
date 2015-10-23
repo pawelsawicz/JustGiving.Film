@@ -17,6 +17,8 @@ namespace JustGiving.Film
 
         protected override void ConfigureConventions(NancyConventions conventions)
         {
+            conventions.ViewLocationConventions.Insert(0,
+                                                       (viewName, model, context) => string.Concat("Views/", viewName));
             conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("Scripts"));
             base.ConfigureConventions(conventions);
         }
