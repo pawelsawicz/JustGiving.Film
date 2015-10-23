@@ -11,9 +11,10 @@ namespace JustGiving.Film.Modules
     {
         public HomeModule()
         {
-            Get["/home"] = x =>
+
+            Get["/"] = x =>
                 {
-                    return View["home", GetVotes()];
+                    return View["index", GetVotes()];
                 };
         }
 
