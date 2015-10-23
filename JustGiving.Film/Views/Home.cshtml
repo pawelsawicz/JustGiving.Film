@@ -1,0 +1,42 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+<!doctype html>
+<html>
+	<head>
+		<title>Bar Chart</title>
+		<script src="~/Scripts/Chart.js"></script>
+	</head>
+	<body>
+		<div style="width: 50%">
+			<canvas id="canvas" height="450" width="600"></canvas>
+		</div>
+          
+	<script>
+	    var randomScalingFactor = function () { return Math.round(Math.random() * 100) };
+	    var movieNames = [];
+	    var voteCount = [];
+        @foreach (var name in @Model)
+	    {
+	        @:movieNames.push("@name.Name");
+            @:voteCount.push(@name.Votes);
+	    }
+	    var barChartData = {
+	        labels: movieNames,
+	        datasets: [
+                {
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: voteCount
+                }
+	        ]
+	    }
+	    window.onload = function () {
+	        var ctx = document.getElementById("canvas").getContext("2d");
+	        window.myBar = new Chart(ctx).Bar(barChartData, {
+	            responsive: true
+	        });
+	    }
+	</script>
+	</body>
+</html>
