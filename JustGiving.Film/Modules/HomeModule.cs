@@ -45,13 +45,14 @@ namespace JustGiving.Film.Modules
 
         public List<string> GetMovies()
         {
-            var result = new List<string> { "Dead Man's Shoes", "Elf", "Somers Town" };
+            var result = new List<string> {"The Shining", "A Nightmare on Elm Street", "Scream"};
             return result;
         }
 
         public IEnumerable<Vote> GetVotes()
         {
-            var votes = GetFundraisingPageDonations().Donations;
+            var votes =
+                GetFundraisingPageDonations().Donations.Where(x => x.DonationDate >= new DateTime(2015, 04, 1)).ToList();
             var candidates = GetMovies();
             var result = new List<string>();
             foreach (var vote in votes)
