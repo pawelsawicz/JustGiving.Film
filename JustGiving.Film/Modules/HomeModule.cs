@@ -45,7 +45,7 @@ namespace JustGiving.Film.Modules
 
         public List<string> GetMovies()
         {
-            var result = new List<string> {"The Shining", "A Nightmare on Elm Street", "Scream"};
+            var result = new List<string> {"The Shining", "Nightmare on Elm Street", "Scream"};
             return result;
         }
 
@@ -72,7 +72,7 @@ namespace JustGiving.Film.Modules
                         Votes = group.Count()
                     });
             }
-            return votesResults;
+            return votesResults.Where(x => x.Name != "Empty");
         }
 
         public string IsMovie(string vote)
@@ -80,7 +80,7 @@ namespace JustGiving.Film.Modules
             var candidates = GetMovies();
             foreach (var candidate in candidates)
             {
-                if (vote.Contains(candidate))
+                if (vote.ToLower().Contains(candidate.ToLower()))
                 {
                     return candidate;
                 }
