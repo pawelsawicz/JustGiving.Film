@@ -45,7 +45,7 @@ namespace JustGiving.Film.Modules
 
         public List<string> GetMovies()
         {
-            var result = new List<string> { "Home Alone", "Die Hard", "It a wonderful life" };
+            var result = new List<string> { "Home Alone", "Die Hard", "It's a wonderful life" };
             return result;
         }
 
